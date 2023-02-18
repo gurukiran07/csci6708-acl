@@ -20,6 +20,5 @@ namespace std_acl{
         while(std::getline(file, line)){
             std::cout << line << "\n";
         }
-
     }
 };
