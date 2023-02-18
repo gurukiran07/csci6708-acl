@@ -1,3 +1,6 @@
+#ifndef CSCI6708_IP_H
+#define CSCI6708_IP_H
+
 #include <string>
 #include <utility>
 #include <array>
@@ -13,8 +16,10 @@ class ip{
     ip(std::string ip_addr, std::string mask = "0.0.0.0"): ip_data(split(ip_addr, mask)){
         
     }
-    std::array<std::pair<int, bool>, 4> split(std::string ip_addr, std::string mask = "0.0.0.0");
-    bool operator==(std::string ip_addr);
+    std::array<std::pair<int, bool>, 4> split(std::string, std::string mask = "0.0.0.0");
+    bool operator==(std::string);
 };
 
 }
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef CSCI6708_STDACL_H
+#define CSCI6708_STDACL_H
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -22,3 +25,5 @@ namespace std_acl{
         }
     }
 };
+
+#endif
