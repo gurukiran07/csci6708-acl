@@ -20,8 +20,12 @@ std::array<std::pair<int, bool>, 4> ip::split(std::string ip_addr, std::string m
     return ip_data;
 }
 
+auto ip::get_data(){
+    return ip_data;
+}
+
 bool ip::operator==(std::string ip_addr){
-    auto comp_ip = split(ip_addr);
+    auto comp_ip = ip(ip_addr).get_data();
     bool flag{true};
     for(size_t i = 0; i < comp_ip.size(); ++i){
         auto ip_pair = ip_data[i];
