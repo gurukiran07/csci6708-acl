@@ -13,9 +13,8 @@ namespace std_acl{
         std::unordered_set<std::string> permit;
         std::unordered_set<std::string> deny;
         std::string flag;
-
     };
-    
+
     void read_file(std::string filename){
         std::ifstream file{filename};
         std::string line;
