@@ -6,7 +6,7 @@ SRC_FILES = src/*.cpp
 run : main
 	./main
 
-main : ip.o acl.o
+main : ip.o acl.o src/main.cpp
 	$(CXX) $(CXXFLAGS) -I $(HEADERS) ip.o acl.o src/main.cpp -o main
 
 ip.o: src/headers/ip.h src/ip.cpp
