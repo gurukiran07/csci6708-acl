@@ -4,25 +4,26 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <unordered_set>
+#include <vector>
+#include <utility>
+#include "ip.h"
 
 namespace std_acl{
-    std::string acl = "stdandard ACL";
+constexpr const char pckt_denied[7] = "denied";
+constexpr const char pckt_permitted[10] = "permitted";
+class acl{
+    using acl_stmts_t = std::vector<std::pair<std::string, ip>>;
+    acl_stmts_t acl_stmts;
+    std::vector<std::string> comp_ips;
+    public:
+    acl(){}
+    acl(std::string acl_file, std::string ip_file)
+        :acl_stmts(read_acl_file(acl_file)), comp_ips(read_ip_file(ip_file)){}
 
-    class acl{
-        std::unordered_set<std::string> permit;
-        std::unordered_set<std::string> deny;
-        std::string flag;
-    };
-
-    void read_file(std::string filename){
-        std::ifstream file{filename};
-        std::string line;
-
-        while(std::getline(file, line)){
-            std::cout << line << "\n";
-        }
-    }
+    acl_stmts_t read_acl_file(std::string);
+    std::vector<std::string> read_ip_file(std::string);
+    void process();
+};
 };
 
 #endif
