@@ -22,6 +22,6 @@ class acl{
     std::vector<ip> read_ip_file(std::string);
     void process();
 };
-};
+}
 
 #endif
