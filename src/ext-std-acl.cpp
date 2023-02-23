@@ -45,6 +45,7 @@ namespace std_acl{
                 {src, dst}
             });
         }
+        file.close();
         return stmts;
     }
    
@@ -62,6 +63,7 @@ namespace std_acl{
                 {src, dst}
             );
         }
+        file.close();
         return comp;
     };
 
@@ -73,6 +75,7 @@ namespace std_acl{
         flag &= (dst_ip == dst.second);  
         return flag;
     }
+
     void ext_acl::process(){
         for(auto& comp_ip: comp_ips){
             bool deny_all = true;
@@ -88,7 +91,7 @@ namespace std_acl{
                 }
             }
             if (deny_all){
-                std::cout << "D Packet from " << comp_ip.first.ip_repr 
+                std::cout << "Packet from " << comp_ip.first.ip_repr 
                     << " to " << comp_ip.second.ip_repr 
                     << " on port " << *(comp_ip.first.get_ports().begin()) << " "
                     << pckt_denied << "\n";

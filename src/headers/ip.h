@@ -23,13 +23,14 @@ class ip{
     public:
     std::string ip_repr;
     ip(){}
-    ip(std::string ip_addr,
-       std::string mask = "0.0.0.0"): ip_data(split(ip_addr, mask)), ports{}, ip_repr(ip_addr){}
-    
+    ip(std::string ip_addr, std::string mask = "0.0.0.0"): 
+        ip_data(split(ip_addr, mask)),
+        ports{},
+        ip_repr(ip_addr){}
+
     void set_ports(std::string port_num );
     std::unordered_set<size_t> get_ports();
     ip_t split(std::string, std::string mask);
-    bool operator==(std::string) const;
     bool operator==(ip);
 };
 

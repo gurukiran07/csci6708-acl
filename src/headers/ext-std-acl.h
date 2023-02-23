@@ -24,7 +24,6 @@ class ext_acl{
     acl_stmts_t read_acl_file(std::string);
     std::vector<std::pair<ip, ip>> read_ip_file(std::string);
     void process();
-    void print();
     bool compare(std::pair<ip, ip>, std::pair<ip, ip>);
 };
 }
