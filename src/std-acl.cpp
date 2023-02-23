@@ -6,7 +6,10 @@ acl::acl_stmts_t acl::read_acl_file(std::string filename){
     std::string access_list, action, ip_addr, mask;
     int std_acl_num;
     acl_stmts_t stmts;
-    while(file >> access_list >> std_acl_num >> action >> ip_addr >> mask ){
+    while(file >> access_list >> std_acl_num >> action >> ip_addr){
+        if (ip_addr != "any"){
+            file >> mask;
+        }
         stmts.push_back({action, ip(ip_addr, mask)});
     }
     file.close();
@@ -28,14 +31,15 @@ void acl::process(){
     for(auto& comp_ip: comp_ips){
         bool deny_all = true;
         for(auto& acl_stmt: acl_stmts){
-            if (acl_stmt.second == comp_ip){
+            const ip src_ip = acl_stmt.second;
+            if (src_ip == comp_ip){
                 std::cout << "Packet from " << comp_ip << " " << (acl_stmt.first == "deny" ? pckt_denied: pckt_permitted) << "\n";
                 deny_all = false;
                 break;
             }
         }
         if (deny_all)
-            std::cout << "Packet from " << comp_ip << " " << pckt_denied << "\n";
+            std::cout << "D Packet from " << comp_ip << " " << pckt_denied << "\n";
     }
 }
 }
