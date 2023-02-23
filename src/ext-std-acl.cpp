@@ -65,7 +65,7 @@ namespace std_acl{
         }
         file.close();
         return comp;
-    };
+    }
 
     bool ext_acl::compare(std::pair<ip, ip> src, std::pair<ip, ip> dst){
         bool flag = true;
